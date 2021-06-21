@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import CoreGraphics
 
 public struct FrameEncodable: Encodable {
     var width: CGFloat?
