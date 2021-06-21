@@ -9,10 +9,10 @@ import Foundation
 import CoreGraphics
 
 public struct PaddingCodable: Codable {
-    var top: CGFloat?
-    var bottom: CGFloat?
-    var leading: CGFloat?
-    var trailing: CGFloat?
+    public var top: CGFloat?
+    public var bottom: CGFloat?
+    public var leading: CGFloat?
+    public var trailing: CGFloat?
     
     public init(top: CGFloat? = nil,
                 bottom: CGFloat? = nil,
