@@ -1,5 +1,5 @@
 //
-//  View.swift
+//  ViewEncodable.swift
 //  
 //
 //  Created by Mateus Forgiarini on 10/19/20.
@@ -7,19 +7,19 @@
 
 import Foundation
 
-public struct ViewProperties: Encodable {
+public struct ViewPropertiesEncodable: Encodable {
     var padding: PaddingCodable?
     var destination: String?
-    var frame: Frame?
+    var frame: FrameEncodable?
     var cornerRadius: CGFloat?
-    var alignment: Alignment?
+    var alignment: AlignmentCodable?
     var navigationTitle: String?
     
     public init(padding: PaddingCodable? = nil,
                 destination: String? = nil,
-                frame: Frame? = nil,
+                frame: FrameEncodable? = nil,
                 cornerRadius: CGFloat? = nil,
-                alignment: Alignment? = nil,
+                alignment: AlignmentCodable? = nil,
                 navigationTitle: String? = nil) {
         self.padding = padding
         self.destination = destination
@@ -30,13 +30,13 @@ public struct ViewProperties: Encodable {
     }
 }
 
-public struct View<T: Encodable> : Encodable, Equatable {
+public struct ViewEncodable<T: Encodable> : Encodable, Equatable {
     var type: String
     var id: String
-    var properties: ViewProperties?
+    var properties: ViewPropertiesEncodable?
     var view: T?
     
-    public init(id: String, view: T, properties: ViewProperties? = nil) {
+    public init(id: String, view: T, properties: ViewPropertiesEncodable? = nil) {
         self.id = id
         self.view = view
         self.type = String(describing: T.self)
@@ -44,7 +44,7 @@ public struct View<T: Encodable> : Encodable, Equatable {
     }
 }
 
-public extension View {
+public extension ViewEncodable {
     static func == (lhs: Self, rhs: Self) -> Bool {
         return lhs.id == rhs.id
     }

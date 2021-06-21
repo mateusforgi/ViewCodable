@@ -1,5 +1,5 @@
 //
-//  Frame.swift
+//  FrameEncodable.swift
 //  
 //
 //  Created by Mateus Forgiarini on 11/9/20.
@@ -7,7 +7,7 @@
 
 import Foundation
 
-public struct Frame: Encodable {
+public struct FrameEncodable: Encodable {
     var width: CGFloat?
     var height: CGFloat?
     

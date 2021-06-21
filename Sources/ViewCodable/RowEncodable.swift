@@ -1,12 +1,12 @@
 //
-//  Row.swift
+//  RowEncodable.swift
 //  
 //
 //  Created by Mateus Forgiarini on 10/19/20.
 //
 
 import Foundation
-public struct Row {
+public struct RowEncodable {
     public var title: String
     public var subTitle: String
     

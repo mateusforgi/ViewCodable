@@ -1,20 +1,20 @@
 //
-//  Text.swift
+//  TextEncodable.swift
 //  
 //
 //  Created by Mateus Forgiarini on 10/26/20.
 //
 
 import Foundation
-public struct Text: Encodable {
+public struct TextEncodable: Encodable {
    
-    public var viewProperties: ViewProperties?
+    public var viewProperties: ViewPropertiesEncodable?
     public var padding: PaddingCodable?
     public var text: String
-    public var font: Font?
+    public var font: FontEncodable?
     
     public init(text: String,
-                font: Font? = nil) {
+                font: FontEncodable? = nil) {
         self.text = text
         self.font = font
     }
