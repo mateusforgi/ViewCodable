@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-public struct FontEncodable: Encodable {
+public struct FontEncodable: Codable {
     
     public var size: CGFloat
     public var weight: FontWeightEncodable
@@ -18,7 +18,7 @@ public struct FontEncodable: Encodable {
     }
 }
 
-public struct FontWeightEncodable: Encodable {
+public struct FontWeightEncodable: Codable {
     var value: Value
     
     @frozen public enum Value: String, Codable {
