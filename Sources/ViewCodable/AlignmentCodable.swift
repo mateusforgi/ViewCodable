@@ -20,7 +20,7 @@ public struct AlignmentCodable: Codable {
         self.value = value
     }
     
-    var alignment: Alignment {
+    public var alignment: Alignment {
         switch value {
         case .center:
             return .center
@@ -56,7 +56,7 @@ public struct HorizontalAlignmentCodable: Codable {
         self.value = value
     }
     
-    var alignment: HorizontalAlignment {
+    public var alignment: HorizontalAlignment {
         switch value {
         case .leading:
             return .leading
@@ -80,7 +80,7 @@ public struct VerticalAlignmentCodable: Codable {
         self.value = value
     }
     
-    var alignment: VerticalAlignment {
+    public var alignment: VerticalAlignment {
         switch value {
         case .top:
             return .top
