@@ -13,7 +13,7 @@ import UIKit
 import AppKit
 #endif
 
-public struct ImageCodable: Codable {
+public struct ImageCodable: ServerDrivenView {
     public var url: String
     
     public init(url: String) {
