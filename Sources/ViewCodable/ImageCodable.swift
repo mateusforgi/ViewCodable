@@ -7,6 +7,7 @@
 
 import SwiftUI
 import Combine
+import AppKit
 
 public struct ImageCodable: Codable {
     public var url: String
