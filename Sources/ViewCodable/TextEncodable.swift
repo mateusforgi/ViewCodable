@@ -5,17 +5,21 @@
 //  Created by Mateus Forgiarini on 10/26/20.
 //
 
-import Foundation
-public struct TextEncodable: Encodable {
+import SwiftUI
+
+public struct TextCodable: ViewCodable {
    
-    public var viewProperties: ViewPropertiesEncodable?
-    public var padding: PaddingCodable?
     public var text: String
-    public var font: FontEncodable?
+    public var font: FontEncodable
     
     public init(text: String,
-                font: FontEncodable? = nil) {
+                font: FontEncodable) {
         self.text = text
         self.font = font
     }
+    
+   public var body: some View {
+        Text(text).font(Font.system(size: font.size, weight: font.weight.weight))
+    }
 }
+
