@@ -7,11 +7,15 @@
 
 import SwiftUI
 import Combine
+#if os(iOS)
+import UIKit
+#else
 import AppKit
+#endif
 
 public struct ImageCodable: Codable {
     public var url: String
-
+    
     public init(url: String) {
         self.url = url
     }
@@ -43,18 +47,33 @@ private class ImageLoader: ObservableObject {
 
 private struct ImageView: View {
     @ObservedObject var imageLoader:ImageLoader
+    
+    #if os(iOS)
+    @State var image: UIImage = UIImage()
+    #else
     @State var image: NSImage = NSImage()
+    #endif
     
     init(withURL url:String) {
         imageLoader = ImageLoader(urlString:url)
     }
     
     var body: some View {
+        #if os(iOS)
+        Image(uiImage: image)
+            .resizable()
+            .aspectRatio(contentMode: .fit)
+            .onReceive(imageLoader.didChange) { data in
+                self.image = UIImage(data: data) ?? UIImage()
+            }
+        #else
         Image(nsImage: image)
             .resizable()
             .aspectRatio(contentMode: .fit)
             .onReceive(imageLoader.didChange) { data in
                 self.image = NSImage(data: data) ?? NSImage()
             }
+        #endif
     }
 }
+
