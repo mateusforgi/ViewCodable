@@ -7,4 +7,4 @@
 
 import SwiftUI
 
-protocol ServerDrivenView: View, Codable {}
+public protocol ServerDrivenView: View, Codable {}
