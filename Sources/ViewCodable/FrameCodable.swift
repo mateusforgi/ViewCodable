@@ -9,8 +9,8 @@ import Foundation
 import CoreGraphics
 
 public struct FrameCodable: Codable {
-    var width: CGFloat?
-    var height: CGFloat?
+    public var width: CGFloat?
+    public var height: CGFloat?
     
     public init(width: CGFloat?, height: CGFloat?) {
         self.width = width
