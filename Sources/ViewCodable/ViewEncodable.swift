@@ -11,14 +11,14 @@ import CoreGraphics
 public struct ViewPropertiesEncodable: Encodable {
     var padding: PaddingCodable?
     var destination: String?
-    var frame: FrameEncodable?
+    var frame: FrameCodable?
     var cornerRadius: CGFloat?
     var alignment: AlignmentCodable?
     var navigationTitle: String?
     
     public init(padding: PaddingCodable? = nil,
                 destination: String? = nil,
-                frame: FrameEncodable? = nil,
+                frame: FrameCodable? = nil,
                 cornerRadius: CGFloat? = nil,
                 alignment: AlignmentCodable? = nil,
                 navigationTitle: String? = nil) {
