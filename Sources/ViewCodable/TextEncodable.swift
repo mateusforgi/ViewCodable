@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-public struct TextCodable: ViewCodable {
+public struct TextCodable: ServerDrivenView {
    
     public var text: String
     public var font: FontEncodable
