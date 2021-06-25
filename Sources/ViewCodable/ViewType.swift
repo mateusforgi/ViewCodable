@@ -10,7 +10,7 @@ import Foundation
 public enum ViewType: CaseIterable {
     case none, list, stack, text, image
     
-    init(rawValue: String) {
+    public init(rawValue: String) {
         switch rawValue {
         case String(describing: ListCodable.self): self = .list
         case String(describing: StackCodable.self): self = .stack
