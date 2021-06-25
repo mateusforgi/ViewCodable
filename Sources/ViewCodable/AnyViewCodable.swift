@@ -51,15 +51,15 @@ import SwiftUI
     @ViewBuilder public var body: some View {
         switch type {
         case .image:
-            (value as? ImageCodable)?.body
+            (value as? ImageCodable)
         case .none:
             Spacer()
         case .list:
-            (value as? ListCodable)?.body
+            (value as? ListCodable)
         case .stack:
-            (value as? StackCodable)?.body
+            (value as? StackCodable)
         case .text:
-            (value as? TextCodable)?.body
+            (value as? TextCodable)
         }
     }
 }
