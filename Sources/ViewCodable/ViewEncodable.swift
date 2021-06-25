@@ -6,9 +6,9 @@
 //
 
 import Foundation
-import CoreGraphics
+import SwiftUI
 
-public struct ViewPropertiesEncodable: Encodable {
+public struct ViewPropertiesEncodable: Codable {
     var padding: PaddingCodable?
     var destination: String?
     var frame: FrameCodable?
@@ -31,15 +31,15 @@ public struct ViewPropertiesEncodable: Encodable {
     }
 }
 
-public struct ViewEncodable<T: Encodable> : Encodable, Equatable {
+public struct ViewEncodable<T: ServerDrivenView> : Encodable, Equatable {
     var type: String
     var id: String
     var properties: ViewPropertiesEncodable?
-    var view: T?
+    var data: T
     
-    public init(id: String, view: T, properties: ViewPropertiesEncodable? = nil) {
+    public init(id: String, data: T, properties: ViewPropertiesEncodable? = nil) {
         self.id = id
-        self.view = view
+        self.data = data
         self.type = String(describing: T.self)
         self.properties = properties
     }

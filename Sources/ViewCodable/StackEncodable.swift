@@ -6,18 +6,18 @@
 //
 
 import Foundation
-import CoreGraphics
+import SwiftUI
 
-public struct StackEncodable: Encodable {
+public struct StackEncodable: Codable {
     
     public var vertical: Bool
-    public var views: [AnyEncodable]
+    public var views: [AnyViewCodable]
     public var horizontalAlignment: HorizontalAlignmentCodable? = nil
     public var verticalAlignment: VerticalAlignmentCodable? = nil
     public var spacing: CGFloat = 0
-   
+    
     public init(vertical: Bool,
-                views: [AnyEncodable],
+                views: [AnyViewCodable],
                 horizontalAlignment: HorizontalAlignmentCodable? = nil,
                 verticalAlignment: VerticalAlignmentCodable? = nil,
                 spacing: CGFloat = 0) {
@@ -26,5 +26,23 @@ public struct StackEncodable: Encodable {
         self.horizontalAlignment = horizontalAlignment
         self.verticalAlignment = verticalAlignment
         self.spacing = spacing
+    }
+    
+    @ViewBuilder var body: some View {
+        if vertical {
+            VStack(alignment: horizontalAlignment?.alignment ?? .center, spacing: spacing) {
+                getContent()
+            }
+        } else {
+            HStack(alignment: verticalAlignment?.alignment ?? .top, spacing: spacing) {
+                getContent()
+            }
+        }
+    }
+    
+    @ViewBuilder func getContent() -> some View {
+        ForEach((0...views.count), id: \.self) {
+            views[$0].getView()
+        }
     }
 }

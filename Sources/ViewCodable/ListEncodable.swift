@@ -5,13 +5,23 @@
 //  Created by Mateus Forgiarini on 10/19/20.
 //
 
-import Foundation
+import SwiftUI
 
-public struct ListEncodable {
+public struct ListEncodable: ServerDrivenView {
 
-    public var cells: [AnyEncodable]
+    public var cells: [AnyViewCodable]
     
-    public init(cells: [AnyEncodable]) {
+    public init(cells: [AnyViewCodable]) {
         self.cells = cells
+    }
+    
+    public var body: some View {
+        getList()
+    }
+    
+    @ViewBuilder func getList() -> some View {
+        List((0...cells.count), id: \.self) { index in
+            cells[index].getView()
+        }
     }
 }
