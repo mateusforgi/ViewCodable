@@ -8,7 +8,7 @@
 import Foundation
 import SwiftUI
 
-public struct ViewPropertiesEncodable: Codable {
+public struct ViewPropertiesCodable: Codable {
     var padding: PaddingCodable?
     var destination: String?
     var frame: FrameCodable?
@@ -34,10 +34,10 @@ public struct ViewPropertiesEncodable: Codable {
 public struct ViewEncodable<T: ServerDrivenView> : Encodable, Equatable {
     var type: String
     var id: String
-    var properties: ViewPropertiesEncodable?
+    var properties: ViewPropertiesCodable?
     var data: T
     
-    public init(id: String, data: T, properties: ViewPropertiesEncodable? = nil) {
+    public init(id: String, data: T, properties: ViewPropertiesCodable? = nil) {
         self.id = id
         self.data = data
         self.type = String(describing: T.self)

@@ -12,8 +12,8 @@ public enum ViewType: CaseIterable {
     
     init(rawValue: String) {
         switch rawValue {
-        case String(describing: ListEncodable.self): self = .list
-        case String(describing: ListEncodable.self): self = .stack
+        case String(describing: ListCodable.self): self = .list
+        case String(describing: StackCodable.self): self = .stack
         case String(describing: TextCodable.self): self = .text
         case String(describing: ImageCodable.self): self = .image
         default:

@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-@frozen public struct AnyViewCodable: Codable {
+@frozen public struct AnyViewCodable: ServerDrivenView {
     public let value: Any
     private let type: ViewType
     
@@ -21,8 +21,12 @@ import SwiftUI
         
         if let text = try? container.decode(TextCodable.self) {
             self.init(text)
-        } else if let text = try? container.decode(ImageCodable.self) {
-            self.init(text)
+        } else if let image = try? container.decode(ImageCodable.self) {
+            self.init(image)
+        } else if let list = try? container.decode(ListCodable.self) {
+            self.init(list)
+        } else if let stack = try? container.decode(StackCodable.self) {
+            self.init(stack)
         } else {
             throw DecodingError.dataCorruptedError(in: container, debugDescription: "Cannot decode container")
         }
@@ -35,23 +39,27 @@ import SwiftUI
             try container.encode(text)
         } else if let image = value as? ImageCodable {
             try container.encode(image)
+        } else if let list = value as? ListCodable {
+            try container.encode(list)
+        } else if let stack = value as? StackCodable {
+            try container.encode(stack)
         } else {
             throw EncodingError.invalidValue(value, EncodingError.Context(codingPath: container.codingPath, debugDescription: "Cannot encode value"))
         }
     }
     
-    @ViewBuilder func getView() -> some View {
+    @ViewBuilder public var body: some View {
         switch type {
         case .image:
             (value as? ImageCodable)?.body
         case .none:
-            (value as? ImageCodable)?.body
+            Spacer()
         case .list:
-            (value as? ImageCodable)?.body
+            (value as? ListCodable)?.body
         case .stack:
-            (value as? ImageCodable)?.body
+            (value as? StackCodable)?.body
         case .text:
-            (value as? ImageCodable)?.body
+            (value as? TextCodable)?.body
         }
     }
 }

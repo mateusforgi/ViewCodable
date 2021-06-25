@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-public struct ListEncodable: ServerDrivenView {
+public struct ListCodable: ServerDrivenView {
 
     public var cells: [AnyViewCodable]
     
@@ -21,7 +21,7 @@ public struct ListEncodable: ServerDrivenView {
     
     @ViewBuilder func getList() -> some View {
         List((0...cells.count), id: \.self) { index in
-            cells[index].getView()
+            cells[index].body
         }
     }
 }

@@ -8,7 +8,7 @@
 import Foundation
 import SwiftUI
 
-public struct StackEncodable: Codable {
+public struct StackCodable: ServerDrivenView {
     
     public var vertical: Bool
     public var views: [AnyViewCodable]
@@ -28,7 +28,7 @@ public struct StackEncodable: Codable {
         self.spacing = spacing
     }
     
-    @ViewBuilder var body: some View {
+    @ViewBuilder public var body: some View {
         if vertical {
             VStack(alignment: horizontalAlignment?.alignment ?? .center, spacing: spacing) {
                 getContent()
@@ -42,7 +42,7 @@ public struct StackEncodable: Codable {
     
     @ViewBuilder func getContent() -> some View {
         ForEach((0...views.count), id: \.self) {
-            views[$0].getView()
+            views[$0].body
         }
     }
 }

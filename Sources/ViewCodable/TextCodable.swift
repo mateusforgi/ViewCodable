@@ -9,10 +9,10 @@ import SwiftUI
 
 public struct TextCodable: ServerDrivenView {
     public var text: String
-    public var font: FontEncodable
+    public var font: FontCodable
     
     public init(text: String,
-                font: FontEncodable) {
+                font: FontCodable) {
         self.text = text
         self.font = font
     }
