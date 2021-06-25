@@ -31,7 +31,7 @@ public struct ViewPropertiesCodable: Codable {
     }
 }
 
-public struct ViewEncodable<T: ServerDrivenView> : Encodable, Equatable {
+public struct ViewCodable<T: ServerDrivenView>: Encodable, Equatable {
     var type: String
     var id: String
     var properties: ViewPropertiesCodable?
@@ -45,7 +45,7 @@ public struct ViewEncodable<T: ServerDrivenView> : Encodable, Equatable {
     }
 }
 
-public extension ViewEncodable {
+public extension ViewCodable {
     static func == (lhs: Self, rhs: Self) -> Bool {
         return lhs.id == rhs.id
     }
