@@ -41,7 +41,7 @@ public struct StackCodable: ServerDrivenView {
     }
     
     @ViewBuilder func getContent() -> some View {
-        ForEach((0...views.count), id: \.self) {
+        ForEach((0..<views.count), id: \.self) {
             views[$0].body
         }
     }
