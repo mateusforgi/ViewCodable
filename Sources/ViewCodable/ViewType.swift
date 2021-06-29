@@ -8,7 +8,7 @@
 import Foundation
 
 public enum ViewType: CaseIterable {
-    case none, list, stack, text, image, padding, frame
+    case none, list, stack, text, image, padding, frame, cornerRadius
     
     public init(rawValue: String) {
         switch rawValue {
@@ -18,6 +18,7 @@ public enum ViewType: CaseIterable {
         case String(describing: ImageCodable.self): self = .image
         case String(describing: PaddingCodable.self): self = .padding
         case String(describing: FrameCodable.self): self = .frame
+        case String(describing: CornerRadiusCodable.self): self = .cornerRadius
         default:
             self = .none
         }

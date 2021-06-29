@@ -31,6 +31,8 @@ import SwiftUI
             self.init(padding)
         } else if let frame = try? container.decode(FrameCodable.self) {
             self.init(frame)
+        } else if let cornerRadius = try? container.decode(CornerRadiusCodable.self) {
+            self.init(cornerRadius)
         } else {
             throw DecodingError.dataCorruptedError(in: container, debugDescription: "Cannot decode container")
         }
@@ -51,6 +53,8 @@ import SwiftUI
             try container.encode(padding)
         } else if let frame = value as? FrameCodable {
             try container.encode(frame)
+        } else if let cornerRadius = value as? CornerRadiusCodable {
+            try container.encode(cornerRadius)
         } else {
             throw EncodingError.invalidValue(value, EncodingError.Context(codingPath: container.codingPath, debugDescription: "Cannot encode value"))
         }
@@ -72,6 +76,8 @@ import SwiftUI
             (value as? PaddingCodable)
         case .frame:
             (value as? FrameCodable)
+        case .cornerRadius:
+            (value as? CornerRadiusCodable)
         }
     }
 }
