@@ -6,14 +6,20 @@
 //
 
 import Foundation
-import CoreGraphics
+import SwiftUI
 
-public struct FrameCodable: Codable {
-    public var width: CGFloat?
-    public var height: CGFloat?
+public struct FrameCodable: ServerDrivenView {
+    public var width: CGFloat
+    public var height: CGFloat
+    public var alignment: AlignmentCodable
     
-    public init(width: CGFloat?, height: CGFloat?) {
+    public init(width: CGFloat, height: CGFloat, alignment: AlignmentCodable) {
         self.width = width
         self.height = height
+        self.alignment = alignment
+    }
+    
+    public var body: some View {
+        frame(width: width, height: height, alignment: alignment.alignment)
     }
 }
