@@ -27,6 +27,8 @@ import SwiftUI
             self.init(list)
         } else if let stack = try? container.decode(StackCodable.self) {
             self.init(stack)
+        } else if let padding = try? container.decode(PaddingCodable.self) {
+            self.init(padding)
         } else {
             throw DecodingError.dataCorruptedError(in: container, debugDescription: "Cannot decode container")
         }
@@ -43,6 +45,8 @@ import SwiftUI
             try container.encode(list)
         } else if let stack = value as? StackCodable {
             try container.encode(stack)
+        } else if  let padding = value as? PaddingCodable {
+            try container.encode(padding)
         } else {
             throw EncodingError.invalidValue(value, EncodingError.Context(codingPath: container.codingPath, debugDescription: "Cannot encode value"))
         }
@@ -60,6 +64,8 @@ import SwiftUI
             (value as? StackCodable)
         case .text:
             (value as? TextCodable)
+        case .padding:
+            (value as? PaddingCodable)
         }
     }
 }

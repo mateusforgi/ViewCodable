@@ -6,9 +6,10 @@
 //
 
 import Foundation
-import CoreGraphics
+import SwiftUI
 
-public struct PaddingCodable: Codable {
+public struct PaddingCodable: ServerDrivenView {
+    
     public var top: CGFloat?
     public var bottom: CGFloat?
     public var leading: CGFloat?
@@ -22,5 +23,12 @@ public struct PaddingCodable: Codable {
         self.bottom = bottom
         self.leading = leading
         self.trailing = trailing
+    }
+    
+    public var body: some View {
+        padding(.top, top)
+            .padding(.leading, leading)
+            .padding(.bottom, bottom)
+            .padding(.trailing, trailing)
     }
 }
