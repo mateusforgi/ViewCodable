@@ -10,15 +10,15 @@ struct LoadingView: View {
     var destination: String?
     
     var body: some View {
+        #if os(iOS)
         if #available(iOS 14.0, *) {
             ProgressView()
         } else {
-            #if os(iOS)
             ActivityIndicator(style: .large)
-            #else
-            ProgressView()
-            #endif
         }
+        #else
+        Spacer()
+        #endif
     }
 }
 
