@@ -8,12 +8,17 @@
 import SwiftUI
 import Combine
 
-struct ServerDrivenStarterView<T: ServerDrivenViewModel>: View {
+public struct ServerDrivenStarterView<T: ServerDrivenViewModel>: View {
     
     @ObservedObject var viewModel: T
-    var destination: String
+    let destination: String
     
-    var body: some View {
+    public init(destination: String, viewModel: T) {
+        self.destination = destination
+        self.viewModel = viewModel
+    }
+    
+    public var body: some View {
         NavigationView {
             ServerDrivenMainView(viewModel: viewModel, destination: destination)
         }
