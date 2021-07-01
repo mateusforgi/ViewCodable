@@ -28,10 +28,14 @@ public struct CornerRadiusCodable: ServerDrivenView {
     }
     
     public var body: some View {
+        #if os(iOS)
         cornerRadius(topLeft, corners: .topLeft)
         cornerRadius(topRight, corners: .topRight)
         cornerRadius(bottomLeft, corners: .bottomLeft)
         cornerRadius(bottomRight, corners: .bottomRight)
+        #else
+        Spacer()
+        #endif
     }
 }
 
