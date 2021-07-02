@@ -8,6 +8,8 @@
 import SwiftUI
 
 public struct TextCodable: ServerDrivenView {
+    public var navigationTitle: String?
+    public var destination: String?
     public var text: String
     public var font: FontCodable
     

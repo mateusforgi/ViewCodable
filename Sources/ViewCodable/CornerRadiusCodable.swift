@@ -12,6 +12,8 @@ import UIKit
 
 public struct CornerRadiusCodable: ServerDrivenView {
     
+    public var navigationTitle: String?
+    public var destination: String?
     public var topLeft: CGFloat
     public var topRight: CGFloat
     public var bottomLeft: CGFloat

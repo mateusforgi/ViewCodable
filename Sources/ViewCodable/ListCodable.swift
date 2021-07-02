@@ -8,7 +8,9 @@
 import SwiftUI
 
 public struct ListCodable: ServerDrivenView {
-
+  
+    public var navigationTitle: String?
+    public var destination: String?
     public var cells: [AnyViewCodable]
     
     public init(cells: [AnyViewCodable]) {

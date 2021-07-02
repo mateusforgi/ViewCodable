@@ -7,4 +7,7 @@
 
 import SwiftUI
 
-public protocol ServerDrivenView: View, Codable {}
+public protocol ServerDrivenView: View, Codable {
+    var destination: String? { get }
+    var navigationTitle: String? { get }
+}

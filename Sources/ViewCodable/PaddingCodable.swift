@@ -10,6 +10,8 @@ import SwiftUI
 
 public struct PaddingCodable: ServerDrivenView {
     
+    public var navigationTitle: String?
+    public var destination: String?
     public var top: CGFloat?
     public var bottom: CGFloat?
     public var leading: CGFloat?

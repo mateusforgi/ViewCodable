@@ -8,6 +8,8 @@
 import SwiftUI
 
 @frozen public struct AnyViewCodable: ServerDrivenView {
+    public var navigationTitle: String?
+    public var destination: String?
     public let value: Any
     private let type: ViewType
     

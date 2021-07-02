@@ -14,6 +14,9 @@ import AppKit
 #endif
 
 public struct ImageCodable: ServerDrivenView {
+    
+    public var navigationTitle: String?
+    public var destination: String?
     public var url: String
     
     public init(url: String) {

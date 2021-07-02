@@ -9,6 +9,9 @@ import Foundation
 import SwiftUI
 
 public struct FrameCodable: ServerDrivenView {
+   
+    public var navigationTitle: String?
+    public var destination: String?
     public var width: CGFloat
     public var height: CGFloat
     public var alignment: AlignmentCodable

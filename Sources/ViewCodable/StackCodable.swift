@@ -10,6 +10,8 @@ import SwiftUI
 
 public struct StackCodable: ServerDrivenView {
     
+    public var navigationTitle: String?
+    public var destination: String?
     public var vertical: Bool
     public var views: [AnyViewCodable]
     public var horizontalAlignment: HorizontalAlignmentCodable? = nil
