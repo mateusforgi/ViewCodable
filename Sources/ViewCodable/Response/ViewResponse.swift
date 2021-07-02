@@ -8,5 +8,6 @@
 import Foundation
 
 public protocol ViewResponse: Codable {
-    var view: AnyViewCodable { get set }
+    associatedtype T: ServerDrivenView
+    var view: T { get set }
 }
