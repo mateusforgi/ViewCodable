@@ -15,8 +15,8 @@ public struct TextCodable: ServerDrivenView {
     
     public init(text: String,
                 font: FontCodable,
-                navigationTitle: String?,
-                destination: String?) {
+                navigationTitle: String? = nil,
+                destination: String? = nil) {
         self.text = text
         self.font = font
         self.navigationTitle = navigationTitle

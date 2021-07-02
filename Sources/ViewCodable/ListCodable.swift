@@ -14,8 +14,8 @@ public struct ListCodable: ServerDrivenView {
     public var cells: [AnyViewCodable]
     
     public init(cells: [AnyViewCodable],
-                navigationTitle: String?,
-                destination: String?) {
+                navigationTitle: String? = nil,
+                destination: String? = nil) {
         self.cells = cells
         self.navigationTitle = navigationTitle
         self.destination = destination

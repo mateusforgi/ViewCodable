@@ -23,8 +23,8 @@ public struct StackCodable: ServerDrivenView {
                 horizontalAlignment: HorizontalAlignmentCodable? = nil,
                 verticalAlignment: VerticalAlignmentCodable? = nil,
                 spacing: CGFloat = 0,
-                navigationTitle: String?,
-                destination: String?) {
+                navigationTitle: String? = nil,
+                destination: String? = nil) {
         self.vertical = vertical
         self.views = views
         self.horizontalAlignment = horizontalAlignment
