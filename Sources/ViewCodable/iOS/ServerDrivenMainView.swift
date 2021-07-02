@@ -8,12 +8,12 @@
 import Combine
 import SwiftUI
 
-struct ServerDrivenMainView<T: ServerDrivenViewModel>: View {
+public struct ServerDrivenMainView<T: ServerDrivenViewModel>: View {
     
     @ObservedObject var viewModel: T
     var destination: String
     
-    var body: some View {
+    public var body: some View {
         VStack {
             if viewModel.loading {
                 LoadingView()
