@@ -8,7 +8,8 @@
 import Combine
 
 public protocol ServerDrivenViewModel: ObservableObject {
+    associatedtype T: ServerDrivenView
     var loading: Bool { get set }
-    var dataSource: AnyViewCodable? { get set }
+    var dataSource: T? { get set }
     func fetch(destination: String)
 }
