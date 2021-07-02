@@ -14,9 +14,13 @@ public struct TextCodable: ServerDrivenView {
     public var font: FontCodable
     
     public init(text: String,
-                font: FontCodable) {
+                font: FontCodable,
+                navigationTitle: String?,
+                destination: String?) {
         self.text = text
         self.font = font
+        self.navigationTitle = navigationTitle
+        self.destination = destination
     }
     
    public var body: some View {

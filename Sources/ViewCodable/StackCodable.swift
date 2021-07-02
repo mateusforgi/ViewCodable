@@ -22,12 +22,16 @@ public struct StackCodable: ServerDrivenView {
                 views: [AnyViewCodable],
                 horizontalAlignment: HorizontalAlignmentCodable? = nil,
                 verticalAlignment: VerticalAlignmentCodable? = nil,
-                spacing: CGFloat = 0) {
+                spacing: CGFloat = 0,
+                navigationTitle: String?,
+                destination: String?) {
         self.vertical = vertical
         self.views = views
         self.horizontalAlignment = horizontalAlignment
         self.verticalAlignment = verticalAlignment
         self.spacing = spacing
+        self.navigationTitle = navigationTitle
+        self.destination = destination
     }
     
     @ViewBuilder public var body: some View {

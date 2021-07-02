@@ -13,8 +13,12 @@ public struct ListCodable: ServerDrivenView {
     public var destination: String?
     public var cells: [AnyViewCodable]
     
-    public init(cells: [AnyViewCodable]) {
+    public init(cells: [AnyViewCodable],
+                navigationTitle: String?,
+                destination: String?) {
         self.cells = cells
+        self.navigationTitle = navigationTitle
+        self.destination = destination
     }
     
     public var body: some View {

@@ -19,8 +19,12 @@ public struct ImageCodable: ServerDrivenView {
     public var destination: String?
     public var url: String
     
-    public init(url: String) {
+    public init(url: String,
+                navigationTitle: String?,
+                destination: String?) {
         self.url = url
+        self.navigationTitle = navigationTitle
+        self.destination = destination
     }
     
     public var body: some View {
