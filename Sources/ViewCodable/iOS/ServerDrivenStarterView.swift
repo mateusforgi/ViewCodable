@@ -20,7 +20,7 @@ public struct ServerDrivenStarterView<T: ServerDrivenViewModel>: View {
     
     public var body: some View {
         NavigationView {
-            ServerDrivenMainView(viewModel: viewModel, destination: destination)
+            ServerDrivenMainView(destination: destination, viewModel: viewModel)
         }
     }
 }

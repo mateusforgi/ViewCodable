@@ -13,6 +13,11 @@ public struct ServerDrivenMainView<T: ServerDrivenViewModel>: View {
     @ObservedObject var viewModel: T
     var destination: String
     
+    public init(destination: String, viewModel: T) {
+        self.destination = destination
+        self.viewModel = viewModel
+    }
+    
     public var body: some View {
         VStack {
             if viewModel.loading {
