@@ -15,6 +15,8 @@ import SwiftUI
     
     public init<T: ServerDrivenView>(_ value: T?) {
         self.value = value ?? ()
+        self.navigationTitle = value?.navigationTitle
+        self.destination = value?.destination
         self.type = ViewType(rawValue: String(describing: T.self))
     }
     
