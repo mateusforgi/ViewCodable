@@ -11,13 +11,11 @@ import SwiftUI
     public var navigationTitle: String?
     public var destination: String?
     public let value: Any
-    private let type: ViewType
     
     public init<T: ServerDrivenView>(_ value: T?) {
         self.value = value ?? ()
         self.navigationTitle = value?.navigationTitle
         self.destination = value?.destination
-        self.type = ViewType(rawValue: String(describing: T.self))
     }
     
     public init(from decoder: Decoder) throws {
