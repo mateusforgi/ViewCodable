@@ -18,9 +18,14 @@ import SwiftUI
         self.destination = value?.destination
     }
     
+    enum CodingKeys : String, CodingKey {
+        case value
+        case type
+    }
+    
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        
+
         if let text = try? container.decode(TextCodable.self) {
             self.init(text)
         } else if let image = try? container.decode(ImageCodable.self) {
@@ -41,29 +46,37 @@ import SwiftUI
     }
     
     public func encode(to encoder: Encoder) throws {
-        var container = encoder.singleValueContainer()
+        var container = encoder.container(keyedBy: CodingKeys.self)
+        try container.encode(type, forKey: .type)
         
-        if let text = value as? TextCodable {
-            try container.encode(text)
-        } else if let image = value as? ImageCodable {
-            try container.encode(image)
-        } else if let list = value as? ListCodable {
-            try container.encode(list)
-        } else if let stack = value as? StackCodable {
-            try container.encode(stack)
-        } else if let padding = value as? PaddingCodable {
-            try container.encode(padding)
-        } else if let frame = value as? FrameCodable {
-            try container.encode(frame)
-        } else if let cornerRadius = value as? CornerRadiusCodable {
-            try container.encode(cornerRadius)
-        } else {
+        switch ViewType(rawValue: type) {
+        case .text:
+            try encode(to: &container, value: value, type: TextCodable.self)
+        case .none:
             throw EncodingError.invalidValue(value, EncodingError.Context(codingPath: container.codingPath, debugDescription: "Cannot encode value"))
+        case .list:
+            try encode(to: &container, value: value, type: ListCodable.self)
+        case .stack:
+            try encode(to: &container, value: value, type: StackCodable.self)
+        case .image:
+            try encode(to: &container, value: value, type: ImageCodable.self)
+        case .padding:
+            try encode(to: &container, value: value, type: PaddingCodable.self)
+        case .frame:
+            try encode(to: &container, value: value, type: FrameCodable.self)
+        case .cornerRadius:
+            try encode(to: &container, value: value, type: CornerRadiusCodable.self)
         }
+    }
+
+    func encode<T: ServerDrivenView>(to container: inout KeyedEncodingContainer<AnyViewCodable.CodingKeys>,
+                                     value: Any,
+                                     type: T.Type) throws {
+        try container.encode(value as? T, forKey: .value)
     }
     
     @ViewBuilder public var body: some View {
-        switch type {
+        switch ViewType(rawValue: type) {
         case .image:
             (value as? ImageCodable)
         case .none:

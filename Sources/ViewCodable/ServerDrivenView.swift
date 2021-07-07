@@ -10,7 +10,7 @@ import SwiftUI
 public protocol ServerDrivenView: View, Codable {
     var destination: String? { get }
     var navigationTitle: String? { get }
-    var type: ViewType { get }
+    var type: String { get }
 }
 
 public extension ServerDrivenView {
@@ -22,7 +22,7 @@ public extension ServerDrivenView {
         return nil
     }
     
-    var type: ViewType {
-        ViewType(rawValue: String(describing: Self.self))
+    var type: String {
+        String(describing: Self.self)
     }
 }
