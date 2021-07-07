@@ -26,7 +26,7 @@ public struct ListCodable: ServerDrivenView {
     }
     
     @ViewBuilder func getList() -> some View {
-        List((0...cells.count), id: \.self) { index in
+        List((0..<cells.count), id: \.self) { index in
             cells[index].body
         }
     }
