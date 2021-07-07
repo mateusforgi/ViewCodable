@@ -18,11 +18,14 @@ public struct CornerRadiusCodable: ServerDrivenView {
     public var topRight: CGFloat
     public var bottomLeft: CGFloat
     public var bottomRight: CGFloat
-    
-    public init(topLeft: CGFloat,
+    public var view: AnyViewCodable
+
+    public init(view: AnyViewCodable,
+                topLeft: CGFloat,
                 topRight: CGFloat,
                 bottomLeft: CGFloat,
                 bottomRight: CGFloat) {
+        self.view = view
         self.topLeft = topLeft
         self.topRight = topRight
         self.bottomLeft = bottomLeft

@@ -16,11 +16,14 @@ public struct PaddingCodable: ServerDrivenView {
     public var bottom: CGFloat?
     public var leading: CGFloat?
     public var trailing: CGFloat?
-    
-    public init(top: CGFloat? = nil,
+    public var view: AnyViewCodable
+
+    public init(view: AnyViewCodable,
+                top: CGFloat? = nil,
                 bottom: CGFloat? = nil,
                 leading: CGFloat? = nil,
                 trailing: CGFloat? = nil) {
+        self.view = view
         self.top = top
         self.bottom = bottom
         self.leading = leading
