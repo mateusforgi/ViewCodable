@@ -7,12 +7,18 @@
 
 import SwiftUI
 
-struct BackgroundColorCodable: ServerDrivenView {
+public struct BackgroundColorCodable: ServerDrivenView {
 
     public var view: AnyViewCodable
-    public var hexcolor: String
+    public var hexColor: String
+    
+    public init(view: AnyViewCodable,
+                hexColor: String) {
+        self.view = view
+        self.hexColor = hexColor
+    }
     
     public var body: some View {
-        view.background(Color(hex: hexcolor))
+        view.background(Color(hex: hexColor))
     }
 }
