@@ -46,6 +46,8 @@ import SwiftUI
             self.value = try AnyViewCodable.decode(to: &container, type: FrameCodable.self)
         case .cornerRadius:
             self.value = try AnyViewCodable.decode(to: &container, type: CornerRadiusCodable.self)
+        case .backgroundColor:
+            self.value = try AnyViewCodable.decode(to: &container, type: BackgroundColorCodable.self)
         }
     }
     
@@ -70,6 +72,8 @@ import SwiftUI
             try encode(to: &container, value: value, type: FrameCodable.self)
         case .cornerRadius:
             try encode(to: &container, value: value, type: CornerRadiusCodable.self)
+        case .backgroundColor:
+            try encode(to: &container, value: value, type: BackgroundColorCodable.self)
         }
     }
 
@@ -103,6 +107,8 @@ import SwiftUI
             (value as? FrameCodable)
         case .cornerRadius:
             (value as? CornerRadiusCodable)
+        case .backgroundColor:
+            (value as? BackgroundColorCodable)
         }
     }
 }
