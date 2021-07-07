@@ -26,24 +26,26 @@ import SwiftUI
     }
     
     public init(from decoder: Decoder) throws {
-        let container = try decoder.singleValueContainer()
+        var container = try decoder.container(keyedBy: CodingKeys.self)
+        self.type = try container.decode(String.self, forKey: .type)
 
-        if let text = try? container.decode(TextCodable.self) {
-            self.init(text)
-        } else if let image = try? container.decode(ImageCodable.self) {
-            self.init(image)
-        } else if let list = try? container.decode(ListCodable.self) {
-            self.init(list)
-        } else if let stack = try? container.decode(StackCodable.self) {
-            self.init(stack)
-        } else if let padding = try? container.decode(PaddingCodable.self) {
-            self.init(padding)
-        } else if let frame = try? container.decode(FrameCodable.self) {
-            self.init(frame)
-        } else if let cornerRadius = try? container.decode(CornerRadiusCodable.self) {
-            self.init(cornerRadius)
-        } else {
-            throw DecodingError.dataCorruptedError(in: container, debugDescription: "Cannot decode container")
+        switch ViewType(rawValue: self.type) {
+        case .text:
+            self.value = try AnyViewCodable.decode(to: &container, type: TextCodable.self)
+        case .none:
+            throw DecodingError.dataCorrupted(DecodingError.Context(codingPath: [CodingKeys.value], debugDescription: "Cannot decode view"))
+        case .list:
+            self.value = try AnyViewCodable.decode(to: &container, type: ListCodable.self)
+        case .stack:
+            self.value = try AnyViewCodable.decode(to: &container, type: StackCodable.self)
+        case .image:
+            self.value = try AnyViewCodable.decode(to: &container, type: ImageCodable.self)
+        case .padding:
+            self.value = try AnyViewCodable.decode(to: &container, type: PaddingCodable.self)
+        case .frame:
+            self.value = try AnyViewCodable.decode(to: &container, type: FrameCodable.self)
+        case .cornerRadius:
+            self.value = try AnyViewCodable.decode(to: &container, type: CornerRadiusCodable.self)
         }
     }
     
@@ -75,6 +77,12 @@ import SwiftUI
                                      value: Any,
                                      type: T.Type) throws {
         try container.encode(value as? T, forKey: .value)
+    }
+    
+    
+    static func decode<T: ServerDrivenView>(to container: inout KeyedDecodingContainer<AnyViewCodable.CodingKeys>,
+                                     type: T.Type) throws -> T {
+        return try container.decode(type, forKey: .value)
     }
     
     @ViewBuilder public var body: some View {
