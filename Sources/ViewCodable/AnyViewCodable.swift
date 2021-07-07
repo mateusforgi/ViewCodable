@@ -10,12 +10,14 @@ import SwiftUI
 @frozen public struct AnyViewCodable: ServerDrivenView {
     public var navigationTitle: String?
     public var destination: String?
+    public var type: String
     public let value: Any
     
-    public init<T: ServerDrivenView>(_ value: T?) {
-        self.value = value ?? ()
-        self.navigationTitle = value?.navigationTitle
-        self.destination = value?.destination
+    public init<T: ServerDrivenView>(_ value: T) {
+        self.value = value
+        self.navigationTitle = value.navigationTitle
+        self.destination = value.destination
+        self.type = value.type
     }
     
     enum CodingKeys : String, CodingKey {
