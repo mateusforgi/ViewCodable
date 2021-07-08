@@ -24,13 +24,11 @@ import Combine
     enum CodingKeys : String, CodingKey {
         case value
         case type
-        case destination
     }
     
     public init(from decoder: Decoder) throws {
         var container = try decoder.container(keyedBy: CodingKeys.self)
         self.type = try container.decode(String.self, forKey: .type)
-        self.destination = try container.decodeIfPresent(String.self, forKey: .destination)
 
         switch ViewType(rawValue: self.type) {
         case .text:
@@ -94,41 +92,46 @@ import Combine
     
     
     @ViewBuilder public var body: some View {
-        if let destination = destination {
-            
-            NavigationLink(destination: ServerDrivenMainView(destination: destination)) {
-                #if os(iOS)
-                view.navigationBarTitle(navigationTitle ?? String())
-                #else
-                view
-                #endif
-            }
-        } else {
-            view
-        }
-    }
-    
-    
-    @ViewBuilder var view: some View {
         switch ViewType(rawValue: type) {
         case .image:
-            (value as? ImageCodable)
+            Wrapper<ImageCodable>(value: value).body
         case .none:
             Spacer()
         case .list:
-            (value as? ListCodable)
+            Wrapper<ListCodable>(value: value).body
         case .stack:
-            (value as? StackCodable)
+            Wrapper<StackCodable>(value: value).body
         case .text:
-            (value as? TextCodable)
+            Wrapper<TextCodable>(value: value).body
         case .padding:
-            (value as? PaddingCodable)
+            Wrapper<PaddingCodable>(value: value).body
         case .frame:
-            (value as? FrameCodable)
+            Wrapper<FrameCodable>(value: value).body
         case .cornerRadius:
-            (value as? CornerRadiusCodable)
+            Wrapper<CornerRadiusCodable>(value: value).body
         case .backgroundColor:
-            (value as? BackgroundColorCodable)
+            Wrapper<BackgroundColorCodable>(value: value).body
+        }
+    }
+    
+    struct Wrapper<T: ServerDrivenView> {
+        
+        let value: Any
+        
+        @ViewBuilder public var body: some View {
+            let view = (value as! T)
+            if let destination = view.destination {
+                
+                NavigationLink(destination: ServerDrivenMainView(destination: destination)) {
+                    #if os(iOS)
+                    view.navigationBarTitle(view.navigationTitle ?? String())
+                    #else
+                    view
+                    #endif
+                }
+            } else {
+                view
+            }
         }
     }
 }
