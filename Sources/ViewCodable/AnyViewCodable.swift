@@ -14,21 +14,18 @@ import Combine
     public var type: String
     public let value: Any
     
-    public init<T: ServerDrivenView>(_ value: T) {
-        self.value = value
-        self.navigationTitle = value.navigationTitle
-        self.destination = value.destination
-        self.type = value.type
-    }
-    
     enum CodingKeys : String, CodingKey {
         case value
         case type
+        case destination
+        case navigationTitle
     }
     
     public init(from decoder: Decoder) throws {
         var container = try decoder.container(keyedBy: CodingKeys.self)
         self.type = try container.decode(String.self, forKey: .type)
+        self.destination = try container.decodeIfPresent(String.self, forKey: .destination)
+        self.navigationTitle = try container.decodeIfPresent(String.self, forKey: .navigationTitle)
 
         switch ViewType(rawValue: self.type) {
         case .text:
