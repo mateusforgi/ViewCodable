@@ -8,19 +8,19 @@
 import SwiftUI
 import Combine
 
-public struct ServerDrivenStarterView<T: ServerDrivenViewModel>: View {
+public struct ServerDrivenStarterView: View {
     
-    @ObservedObject var viewModel: T
+    @ObservedObject var viewModel: ViewModel
     let destination: String
     
-    public init(destination: String, viewModel: T) {
+    public init(destination: String) {
         self.destination = destination
-        self.viewModel = viewModel
+        self.viewModel = ViewModel(service: DependecyContainer.shared.newInstance()!)
     }
     
     public var body: some View {
         NavigationView {
-            ServerDrivenMainView(destination: destination, viewModel: viewModel)
+            ServerDrivenMainView(destination: destination)
         }
     }
 }

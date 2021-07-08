@@ -8,14 +8,14 @@
 import Combine
 import SwiftUI
 
-public struct ServerDrivenMainView<T: ServerDrivenViewModel>: View {
+public struct ServerDrivenMainView: View {
     
-    @ObservedObject var viewModel: T
+    @ObservedObject var viewModel: ViewModel
     var destination: String
     
-    public init(destination: String, viewModel: T) {
+    public init(destination: String) {
         self.destination = destination
-        self.viewModel = viewModel
+        self.viewModel = ViewModel(service: DependecyContainer.shared.newInstance()!)
     }
     
     public var body: some View {

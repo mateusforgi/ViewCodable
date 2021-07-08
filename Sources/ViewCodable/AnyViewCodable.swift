@@ -94,8 +94,7 @@ import Combine
     @ViewBuilder public var body: some View {
         if let destination = destination {
             
-            NavigationLink(destination: ServerDrivenMainView(destination: destination,
-                                                             viewModel: ViewModel(service: Dependecyontainer.shared.newInstance()!))) {
+            NavigationLink(destination: ServerDrivenMainView(destination: destination)) {
                 #if os(iOS)
                 view.navigationBarTitle(navigationTitle ?? String())
                 #else
