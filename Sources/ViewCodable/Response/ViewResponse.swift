@@ -7,6 +7,6 @@
 
 import Foundation
 
-public protocol ViewResponse: Codable {
-    var view: AnyViewCodable { get }
+public struct ViewResponse: Codable {
+    var view: AnyViewCodable 
 }
