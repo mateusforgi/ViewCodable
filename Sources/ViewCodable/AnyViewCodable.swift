@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Combine
 
 @frozen public struct AnyViewCodable: ServerDrivenView {
     public var navigationTitle: String?
@@ -89,7 +90,25 @@ import SwiftUI
         return try container.decode(type, forKey: .value)
     }
     
+    
     @ViewBuilder public var body: some View {
+        if let destination = destination {
+            
+            NavigationLink(destination: ServerDrivenMainView(destination: destination,
+                                                             viewModel: ViewModel(service: Dependecyontainer.shared.newInstance()!))) {
+                #if os(iOS)
+                view.navigationBarTitle(navigationTitle ?? String())
+                #else
+                view
+                #endif
+            }
+        } else {
+            view
+        }
+    }
+    
+    
+    @ViewBuilder var view: some View {
         switch ViewType(rawValue: type) {
         case .image:
             (value as? ImageCodable)
