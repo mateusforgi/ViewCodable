@@ -14,8 +14,8 @@ public final class DependecyContainer {
 
     private var viewModel: CodableService.Type?
 
-    public func register(instance: CodableService.Type) {
-        viewModel = instance
+    public func register(instance: CodableService) {
+        viewModel = type(of: instance)
     }
 
     func newInstance() -> CodableService? {
