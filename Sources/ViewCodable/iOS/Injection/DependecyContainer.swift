@@ -7,14 +7,14 @@
 
 import Foundation
 
-final class DependecyContainer {
-    static let shared = DependecyContainer()
+public final class DependecyContainer {
+    public static let shared = DependecyContainer()
 
     private init() {}
 
     private var viewModel: CodableService.Type?
 
-    func register(instance: CodableService.Type) {
+    public func register(instance: CodableService.Type) {
         viewModel = instance
     }
 
