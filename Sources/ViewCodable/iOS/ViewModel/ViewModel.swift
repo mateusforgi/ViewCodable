@@ -42,7 +42,7 @@ class ViewModel: ObservableObject, Identifiable, ServerDrivenViewModel {
                 },
                 receiveValue: { [weak self] response in
                     self?.loading = false
-                    self?.dataSource = response
+                    self?.dataSource = response.view
                 }
             ).store(in: &disposables)
     }

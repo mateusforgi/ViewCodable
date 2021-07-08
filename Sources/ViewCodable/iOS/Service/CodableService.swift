@@ -8,5 +8,5 @@
 import Combine
 public protocol CodableService {
     static func newInstance() -> CodableService
-    func get(destination: String) -> AnyPublisher<AnyViewCodable, Error>
+    func get(destination: String) -> AnyPublisher<ViewResponse, Error>
 }
