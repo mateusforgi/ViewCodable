@@ -19,6 +19,6 @@ final class Dependecyontainer {
     }
 
     func newInstance() -> CodableService? {
-        return viewModel?.init()
+        return viewModel?.newInstance()
     }
 }

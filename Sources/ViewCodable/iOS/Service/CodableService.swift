@@ -6,6 +6,7 @@
 //
 
 import Combine
-public protocol CodableService: Initializable {
+public protocol CodableService {
+    static func newInstance() -> CodableService
     func get(destination: String) -> AnyPublisher<AnyViewCodable, Error>
 }
