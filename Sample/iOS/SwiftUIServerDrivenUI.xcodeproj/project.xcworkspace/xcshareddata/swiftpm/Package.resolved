@@ -1,0 +1,16 @@
+{
+  "object": {
+    "pins": [
+      {
+        "package": "ViewCodable",
+        "repositoryURL": "https://github.com/mateusforgi/ViewCodable",
+        "state": {
+          "branch": "main",
+          "revision": "c964f979f010a355dd8d86ca94df1280aa5798dd",
+          "version": null
+        }
+      }
+    ]
+  },
+  "version": 1
+}
