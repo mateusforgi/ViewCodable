@@ -1,3 +1,3 @@
 # ViewCodable
 
-A description of this package.
+ViewCodable is a swift library for build Server Driven UI Components. The library was designed to be used on a swift backend and on iOS apps. Since a swift ui view is just a struct, nothing stop was of building a codable view! And by taking the power of swift backend frameworks like Smoke Framework, we are able to create a strong contract between frontend and backend, since both iOS apps and swift backend are using the exactly same code we can be sure that we are not going to have broke contracts (if we use the same library version of course), meaning that we can be sure that the view we are building on the backend are going to be rendered on the frontend. 
