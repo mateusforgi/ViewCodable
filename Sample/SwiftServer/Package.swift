@@ -10,7 +10,7 @@ let package = Package(
     ],
     dependencies: [
         .package(url: "https://github.com/amzn/smoke-framework.git", .upToNextMajor(from: "2.0.0")),
-        .package(url: "https://github.com/mateusforgi/ViewCodable", .branch("main")),
+        .package(url: "https://github.com/mateusforgi/ViewCodable", .branch("main"))
     ],
     targets: [
         .target(

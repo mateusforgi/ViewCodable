@@ -24,7 +24,9 @@ let package = Package(
         // Targets can depend on other targets in this package, and on products in packages this package depends on.
         .target(
             name: "ViewCodable",
-            dependencies: []),
+            dependencies: [],
+            path: "Package/Sources/ViewCodable",
+            exclude: ["Sample", "ViewCodableTests"]),
         .testTarget(
             name: "ViewCodableTests",
             dependencies: ["ViewCodable"]),
