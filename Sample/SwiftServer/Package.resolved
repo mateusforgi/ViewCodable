@@ -81,15 +81,6 @@
           "revision": "39587bceccda72780e2a8a8c5e857e42a9df2fa8",
           "version": "1.11.0"
         }
-      },
-      {
-        "package": "ViewCodable",
-        "repositoryURL": "https://github.com/mateusforgi/ViewCodable",
-        "state": {
-          "branch": "main",
-          "revision": "d78eadd072fc7cd297d0e213e8194eed51506017",
-          "version": null
-        }
       }
     ]
   },
