@@ -9,9 +9,9 @@ import SwiftUI
 
 @available(iOS 14.0, *)
 @available(macOS 11.0, *)
-struct LibraryViewContent: LibraryContentProvider {
+public struct LibraryViewContent: LibraryContentProvider {
     
-    var views: [LibraryItem] {
+    public var views: [LibraryItem] {
         // MARK: - TextCodable
         LibraryItem(TextCodable(text: "hello world",
                                 font: FontCodable(size: 17,
