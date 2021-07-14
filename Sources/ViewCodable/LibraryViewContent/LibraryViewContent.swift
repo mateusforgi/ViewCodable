@@ -13,16 +13,9 @@ public struct LibraryViewContent: LibraryContentProvider {
     
     public var views: [LibraryItem] {
         // MARK: - TextCodable
-        LibraryItem(TextCodable(text: "hello world",
-                                font: FontCodable(size: 17,
-                                                  weight: FontWeightCodable(.regular))))
+        LibraryItem(TextCodable(text: "hello world", font: FontCodable(size: 17, weight: FontWeightCodable(.regular))))
         
-        LibraryItem(TextCodable(text: "hello world",
-                                font: FontCodable(size: 17,
-                                                  weight: FontWeightCodable(.regular)),
-                                navigationTitle: nil,
-                                destination: nil),
-                    title: "Text Codable with navigation")
+        LibraryItem(TextCodable(text: "hello world", font: FontCodable(size: 17, weight: FontWeightCodable(.regular)), navigationTitle: nil, destination: nil), title: "Text Codable with navigation")
         
         // MARK: - StackCodable
         LibraryItem(StackCodable(vertical: true, views: []))
