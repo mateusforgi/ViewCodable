@@ -23,8 +23,16 @@ public struct TextCodable: ServerDrivenView {
         self.destination = destination
     }
     
-   public var body: some View {
+    public var body: some View {
         Text(text).font(Font.system(size: font.size, weight: font.weight.weight))
     }
 }
 
+#if os(iOS)
+struct TextCodable_Preview: PreviewProvider {
+    static var previews: some View {
+        TextCodable(text: "hello world",
+                    font: FontCodable(size: 24, weight: FontWeightCodable(.bold))).body
+    }
+}
+#endif

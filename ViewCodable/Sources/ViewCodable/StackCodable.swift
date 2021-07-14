@@ -52,3 +52,17 @@ public struct StackCodable: ServerDrivenView {
         }
     }
 }
+
+#if os(iOS)
+struct StackCodable_Preview: PreviewProvider {
+    
+    static let text = TextCodable(text: "hello world",
+                font: FontCodable(size: 24, weight: FontWeightCodable(.bold)))
+    
+    static var previews: some View {
+        StackCodable(vertical: true,
+                     views: [AnyViewCodable(text),
+                             AnyViewCodable(text)]).body
+    }
+}
+#endif

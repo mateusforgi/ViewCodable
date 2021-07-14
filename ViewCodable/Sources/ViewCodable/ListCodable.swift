@@ -31,3 +31,16 @@ public struct ListCodable: ServerDrivenView {
         }
     }
 }
+
+#if os(iOS)
+struct ListCodable_Preview: PreviewProvider {
+    
+    static let text = TextCodable(text: "hello world",
+                font: FontCodable(size: 24, weight: FontWeightCodable(.bold)))
+    
+    static var previews: some View {
+        ListCodable(cells: [AnyViewCodable(text),
+                             AnyViewCodable(text)]).body
+    }
+}
+#endif
