@@ -29,6 +29,7 @@ let package = Package(
             exclude: ["Sample", "ViewCodableTests"]),
         .testTarget(
             name: "ViewCodableTests",
-            dependencies: ["ViewCodable"]),
+            dependencies: ["ViewCodable"],
+            path: "Package/Tests/ViewCodableTests")
     ]
 )
